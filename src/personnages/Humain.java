@@ -16,10 +16,6 @@ public class Humain {
 		return nom;
 	}
 
-	public int getArgent() {
-		return argent;
-	}
-
 	protected void parler(String texte) {
 		System.out.println("(" + nom + ")" + " - " + texte);
 	}
