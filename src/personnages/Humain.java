@@ -1,7 +1,7 @@
 package personnages;
 
 public class Humain {
-	final static int MSIZE = 30;
+	static final int MSIZE = 30;
 	protected String nom;
 	private String boisson;
 	protected int argent;
