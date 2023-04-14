@@ -60,7 +60,7 @@ public class Humain {
 		memoriser(h1);
 	}
 	
-	public void memoriser(Humain humain) {
+	protected void memoriser(Humain humain) {
 		memoire[nbConnaissance%MSIZE] = humain;
 		nbConnaissance++;
 	}
