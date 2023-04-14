@@ -1,9 +1,12 @@
 package personnages;
 
 public class Humain {
+	final static int MSIZE = 30;
 	protected String nom;
 	private String boisson;
 	protected int argent;
+	protected int nbConnaissance = 0;
+	protected Humain[] memoire = new Humain[MSIZE];
 
 	public Humain(String nom, String boisson, int argent) {
 		super();
@@ -28,12 +31,12 @@ public class Humain {
 		parler("Mmmm, un bon verre de " + boisson + " ! GLOUPS !");
 	}
 
-	public void gagnerArgent(int gain) {
+	protected void gagnerArgent(int gain) {
 		argent = argent + gain;
 	}
 
-	public void perdreArgent(int perte) {
-		assert(perte<=argent);
+	protected void perdreArgent(int perte) {
+		assert(perte<=argent); 	
 		argent = argent - perte;
 	}
 
@@ -44,5 +47,29 @@ public class Humain {
 		}else {
 			parler("Je n'ai plus que " + argent + "sous en poche. Je ne peux pas m'offrir " + bien + " à " + prix + " sous.");
 		}
+	}
+	
+	public void faireConnaissanceAvec(Humain h2) {
+		direBonjour();
+		h2.repondre(this);
+		memoriser(h2);
+	}
+	
+	public void repondre(Humain h1) {
+		direBonjour();
+		memoriser(h1);
+	}
+	
+	public void memoriser(Humain humain) {
+		memoire[nbConnaissance%MSIZE] = humain;
+		nbConnaissance++;
+	}
+	
+	public void listerConnaissance() {
+		String s="";
+		for(int i=0; (i<MSIZE && memoire[i]!=null); i++) {
+			s = s + memoire[i].nom + ", ";
+		}
+		parler("Je connais beaucoup de monde dont : " + s.substring(0, s.length()-2));
 	}
 }
