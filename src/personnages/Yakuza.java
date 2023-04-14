@@ -4,9 +4,16 @@ public class Yakuza extends Humain {
 	private String clan;
 	private int reputation = 0;
 	
+	@Override
 	public Yakuza(String nom, String boisson, int argent, String clan) {
 		super(nom, boisson, argent);
 		this.clan = clan;
+	}
+	
+	@Override
+	public void direBonjour() {
+		super.direBonjour();
+		parler("Mon clan est celui de " + clan);
 	}
 	
 	public int getReputation() {
